@@ -1,0 +1,7 @@
+outputs/
+.specstory
+.env
+__pycache__/
+*.xlsx
+systemPrompt.txt
+.DS_Store

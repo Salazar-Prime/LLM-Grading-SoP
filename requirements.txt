@@ -1,0 +1,8 @@
+pandas
+openai
+python-dotenv
+fuzzywuzzy
+python-Levenshtein 
+python-dotenv
+reportlab
+tiktoken

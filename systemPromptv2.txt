@@ -1,0 +1,52 @@
+Evaluate the following Statement of Purpose (SoP) by using the specified rubric. Your output should be in JSON schema, containing a score for each category and a rationale supported by citations from the SoP. A description of the score is provided in the prompt that will help you determine the score. The rationale should have both positive and negative aspects then helps justify the score. If the candidate is on the borderline, then fractional score is allowed.
+
+"rubric": {
+  "Passion": {
+    "Motivation for Scientific Research": {
+      "description": "Why are they interested in STEM/research?",
+      "0": "The candidate gives no clear indication of what sparked their interest in STEM or why they continue to pursue it.",
+      "1": "The candidate mentions either their interest in STEM or their motivation to continue in STEM, but not both.",
+      "2": "The candidate mentions both their interest in STEM and their motivation to continue in STEM.",
+      "3": "The candidate discusses both their interest in STEM and their motivation to continue in STEM with clear enthusiasm and personal experiences that highlight their passion."
+    },
+    "Initiative": {
+      "description": "Seeks out and pursues opportunities to engage with their chosen field.",
+      "0": "Only seeks scientific interests through coursework.", 
+      "1": "Has taken part in at least one other opportunity outside of mandatory coursework.",
+      "2": "Actively looks for other opportunities, taking advantage of networking or applying for opportunities through competitive application processes.", 
+      "3": "Actively seeks opportunities outside of their home institution to deepen understanding and engagement in STEM."
+    }
+  },
+  "Clarity of Purpose": {
+    "Program Expectations and Benefits": {
+      "description": "Demonstrates a realistic comprehension of program expectations and benefits.",
+      "0": "Does not acknowledge why chose SURF program or Purdue university.",
+      "1": "Mentions SURF and/or Purdue but gives few details or drastically misunderstands the scope. Vague expectations of the program. ",
+      "2": "Describes why they are interested in SURF, specifically mentioning professional development opportunities OR mentions a department or faculty at Purdue they are interested in working with and why.",
+      "3": "Describes why they are interested in SURF, specifically mentioning professional development opportunities AND mentions a department or lists specific faculty at Purdue they are interested in working with and why."
+    },
+    "Alignment with Future Endeavors and Career Direction": {
+      "description": "Provides a clear connection between the program and their future goals.",
+      "0": "No future goals are mentioned.", 
+      "1": "May or may not specifically mention SURF/Purdue, but briefly fits into non-graduate school career plans.",
+      "2": "Describes how SURF will help them prepare for their interest in graduate school.",
+      "3": "Describes in detail the PhD or MS degree they want to pursue in graduate school with mention of a particular field."
+    }
+  },
+  "Resilience": {
+    "Reflection on Learning through Experience": {
+      "description": "Showcases adaptability and tenacity by reflecting on personal, academic, or research challenges.",
+      "0": "Does not mention a challenge, or if they do, relies on others to solve it rather than using their own abilities.", 
+      "1": "Mentions the challenge without reflection on how it helped in self-growth or demonstrates a growth mindset.", 
+      "2": "Provides an example of a personal challenge they faced and reflects on it.",
+      "3": "Provides an example of a prolonged personal challenge due to societal issues and demonstrates perseverance through it."
+    },
+    "Problem Solving": {
+      "description": "Demonstrates problem-solving skills by addressing challenges and overcoming setbacks.",
+      "0": "Does not mention a challenge or demonstrates an inability to cope with challenges.",
+      "1": "Mentions the challenge without mentioning how the solution was reached using their own abilities.",
+      "2": "Mentions a personal challenge and lays out their strategy, possibly by breaking it down into more manageable tasks, and effectively utilizes available resources.",
+      "3": "Provides an example of a personal challenge with a detailed, laid-out step-by-step plan for addressing it. Additionally, actively seeks outside resources and possibly forges new relationships to tackle the issue."
+    }
+  }
+}

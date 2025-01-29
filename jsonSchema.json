@@ -1,0 +1,162 @@
+{
+  "name": "sop_evaluation",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "evaluation": {
+        "type": "object",
+        "properties": {
+          "passion": {
+            "type": "object",
+            "properties": {
+              "motivation_for_scientific_research": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the motivation for scientific research category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              },
+              "initiative": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the initiative category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "motivation_for_scientific_research",
+              "initiative"
+            ],
+            "additionalProperties": false
+          },
+          "clarity_of_purpose": {
+            "type": "object",
+            "properties": {
+              "program_expectations_and_benefits": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the program expectations and benefits category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              },
+              "alignment_with_future_endeavors_and_career_direction": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the alignment with future endeavors and career direction category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "program_expectations_and_benefits",
+              "alignment_with_future_endeavors_and_career_direction"
+            ],
+            "additionalProperties": false
+          },
+          "resilience": {
+            "type": "object",
+            "properties": {
+              "reflection_on_learning_through_experience": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the reflection on learning through experience category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              },
+              "problem_solving": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the problem-solving category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "reflection_on_learning_through_experience",
+              "problem_solving"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "passion",
+          "clarity_of_purpose",
+          "resilience"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "evaluation"
+    ],
+    "additionalProperties": false
+  }
+}
