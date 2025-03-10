@@ -7,7 +7,7 @@ Evaluate the following Statement of Purpose (SoP) by using the specified rubric.
       "0": "The candidate gives no clear indication of what sparked their interest in STEM or why they continue to pursue it.",
       "1": "The candidate mentions either their interest in STEM or their motivation to continue in STEM, but not both.",
       "2": "The candidate mentions both their interest in STEM and their motivation to continue in STEM.",
-      "3": "The candidate discusses both their interest in STEM and their motivation to continue in STEM with clear enthusiasm and personal experiences that highlight their passion."
+      "3": "The candidate discusses both their interest in STEM and their motivation to continue in STEM with c`lear enthusiasm and personal experiences that highlight their passion."
     },
     "Initiative": {
       "description": "Seeks out and pursues opportunities to engage with their chosen field.",

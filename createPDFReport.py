@@ -175,7 +175,7 @@ def generate_pdf_report():
         "DateStyle", parent=styles["Normal"], fontSize=14, alignment=1, spaceAfter=30
     )
     current_date = datetime.now().strftime("%B %d, %Y")
-    pdf_content.append(Paragraph(current_date, date_style))
+    pdf_content.append(Paragraph(f"{current_date} | VARUN AGGARAWAL", date_style))
     pdf_content.append(PageBreak())
 
     # Add table of contents with better formatting
