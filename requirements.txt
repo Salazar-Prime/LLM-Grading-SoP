@@ -6,3 +6,5 @@ python-Levenshtein
 python-dotenv
 reportlab
 tiktoken
+pdfplumber
+openpyxl

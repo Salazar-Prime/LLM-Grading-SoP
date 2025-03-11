@@ -1,0 +1,40 @@
+Evaluate the following Statement of Purpose (SoP) by using the specified rubric. Your output should be in JSON schema, containing a score for each category and a rationale supported by citations from the SoP. A description of the score is provided in the prompt that will help you determine the score. The rationale should have both positive and negative aspects then helps justify the score. If the candidate is on the borderline, then fractional score is allowed. Also provide a recommendation for the STARS program track (Design or Manufacturing) based on their SoP and interest, along with the rationale for the choice.
+
+"rubric": {
+  "Passion": {
+    "Motivation for Scientific Research": {
+      "description": "Why are they interested in semiconductors?",
+      "0": "The candidate gives no clear indication of what sparked their interest in semiconductors or why they continue to pursue a degree or career in semiconductors.",
+      "1": "The candidate mentions either their interest in semiconductors OR their motivation to pursue a career or work with semiconductors, but NOT BOTH.",
+      "2": "The candidate mentions both their interest in semiconductors AND their motivation to pursue a career or work with semiconductors.",
+      "3": "The candidate discusses both their interest in semiconductors AND their motivation to continue and pursue a career or work with semiconductors with personal experiences that highlight their PASSION."
+    },
+    "Initiative": {
+      "description": "Seeks out and pursues opportunities to engage with their chosen field.",
+      "0": "Only seeks scientific interests through coursework.",
+      "1": "Has taken part in at least one other opportunity outside of mandatory coursework.",
+      "2": "Actively looks for other opportunities, taking advantage of networking or applying for opportunities through competitive application processes.",
+      "3": "Actively seeks opportunities outside of their home institution to deepen understanding and engagement in semiconductors."
+    }
+  },
+  "Clarity of Purpose": {
+    "Program Expectations and Benefits": {
+      "description": "Demonstrates a realistic comprehension of program expectations and benefits.",
+      "0": "Does not acknowledge why they chose STARS program or interest in semiconductors.",
+      "1": "Mentions STARS but gives few details or drastically misunderstands the scope. Vague expectations of the program.",
+      "2": "Describes why they are interested in STARS, specifically mentioning professional development opportunities OR interest in a specific stars track (manufacturing, packaging, design)",
+      "3": "Describes why they are interested in STARS, specifically mentioning professional development opportunities AND interest in a specific stars track (manufacturing, packaging, design)."
+    },
+    "Alignment with Future Endeavors and Career Direction": {
+      "description": "Provides a clear connection between the program and their future goals.",
+      "0": "No future goals are mentioned.",
+      "1": "May or may not specifically mention STARS/Purdue, but briefly mentions career plans.",
+      "2": "Describes how STARS will help them prepare for their future career.",
+      "3": "Describes in detail the career or graduate school they want to pursue in semiconductors."
+    }
+  }
+}
+"stars_track_choice": {
+  "description": "Recommendation for the STARS program track based on their SoP and interest, along with the rationale for the choice.",
+  "design", "manufacturing"
+}

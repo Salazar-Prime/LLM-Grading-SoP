@@ -26,7 +26,7 @@ def initialize_openai_client():
         raise
 
 
-def load_system_prompt(prompt_file="systemPromptv2.txt"):
+def load_system_prompt(prompt_file=None):
     """
     Load system prompt from a text file.
 
@@ -36,6 +36,8 @@ def load_system_prompt(prompt_file="systemPromptv2.txt"):
     Returns:
         str: System prompt text
     """
+    if prompt_file is None:
+        prompt_file = "systemPromptv2.txt"
     try:
         with open(prompt_file, "r") as file:
             return file.read().strip()
@@ -44,7 +46,7 @@ def load_system_prompt(prompt_file="systemPromptv2.txt"):
         return "You are a helpful assistant."
 
 
-def getResponse(sop_text, json_schema, model="gpt-4o-mini"):
+def getResponse(sop_text, json_schema, model="gpt-4o-mini", prompt_file=None):
     """
     Get OpenAI response for a given statement of purpose.
 
@@ -61,7 +63,7 @@ def getResponse(sop_text, json_schema, model="gpt-4o-mini"):
         client = initialize_openai_client()
 
         # Load system prompt
-        system_prompt = load_system_prompt()
+        system_prompt = load_system_prompt(prompt_file)
 
         # Prepare messages
         messages = [
