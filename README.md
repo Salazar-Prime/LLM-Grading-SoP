@@ -1,10 +1,6 @@
 # SoP Grading System
 
-This repository describes the process of using LLM for grading Statements of Purpose (SoP) using a comprehensive rubric-based evaluation approach. The system follows four main steps to process and evaluate each SoP.
-
-## Project Overview
-
-The SoP Grading System is a comprehensive tool for evaluating student statements of purpose using advanced language models and a detailed rubric-based approach.
+This repository describes the process of using LLM for grading Statements of Purpose (SoP) using a comprehensive **rubric-based evaluation approach**. The system follows four main steps to process and evaluate each SoP.
 
 ## Prerequisites
 
@@ -167,10 +163,7 @@ The system generates several types of outputs:
 
 ### Developers
 
-- **Lead Developer**: [varun Aggarwal]
-- **Rubric Contributors**:
-  - [Kay Kobak]
-  - [Parth Kelkar]
+- **Lead Developer**: [Varun Aggarwal]
 
 ## License
 
