@@ -149,12 +149,12 @@ def process_cleaned_data(
 if __name__ == "__main__":
     # User variables
     # INPUT_FILE = "euroOutputs/cover_letters_temp.xlsx"
-    INPUT_FILE = "euroOutputs/Outliers_STARS25_CoverLetters.xlsx"
+    INPUT_FILE = "euroOutputs/cover_letters_march26.xlsx"
     OUTPUT_DIR = "euroOutputs"
-    OUTPUT_FILE = "combined_results_outliers.xlsx"
+    OUTPUT_FILE = "combined_results_march26.xlsx"
     model = "gpt-4o"
-    continueWithLastFile = True
-    LOG_FILE = "processLLM_stars.log"
+    continueWithLastFile = False
+    LOG_FILE = "processLLM_stars_march26.log"
     PROMPT_FILE = "systemPromptStars_v2.txt"
 
     # Setup logging
@@ -171,7 +171,7 @@ if __name__ == "__main__":
             json_schema,
             model,
             start_index=0,
-            max_entries=27,
+            max_entries=22,
             logger=logger,
             prompt_file=PROMPT_FILE,
             output_file=OUTPUT_FILE

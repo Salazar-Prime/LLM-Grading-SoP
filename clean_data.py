@@ -6,14 +6,19 @@ to a new excel file. This is meant to be run separately from the main OpenAI pro
 
 import pandas as pd
 from utils.cleanString import cleanString, getInstructionInJson
+import os
+from utils.utils import setupLogger
 
 
 def clean_sop_data(input_file, instruction_file, output_file):
+    # Setup logging
+    logger = setupLogger("euroOutputs", "clean_data.log")
+
     # Read instructions
     jsonInstructions = getInstructionInJson(instruction_file)
 
     # Read input excel file
-    df = pd.read_excel(input_file)
+    df = pd.read_csv(input_file, encoding="utf-8")
 
     # Initialize output dataframe
     columns = [
@@ -37,7 +42,7 @@ def clean_sop_data(input_file, instruction_file, output_file):
             cleaned_sop, word_count, logs = cleanString(SoP, jsonInstructions)
 
             # Determine if entry should be skipped (word count > 1000)
-            skipped = word_count > 1000
+            skipped = word_count > 1500
 
             # Create new row
             new_row = {
@@ -54,30 +59,33 @@ def clean_sop_data(input_file, instruction_file, output_file):
             # Add to cleaned data
             cleanedData.loc[len(cleanedData)] = new_row
 
-            # Print progress
-            print(f"Processed row {index}: {row['first_name']} {row['last_name']}")
-            print(f"Word count: {word_count}")
+            # Print and log progress
+            logger.info(
+                f"Processed row {index}: {row['first_name']} {row['last_name']}"
+            )
+            logger.info(f"Word count: {word_count}")
             if logs:
-                print("Cleaning logs:", logs)
-            print("-" * 50)
+                logger.info("Cleaning logs:", logs)
+            logger.info("-" * 50)
 
         except Exception as e:
-            print(f"Error processing row {index}: {str(e)}")
+            logger.error(f"Error processing row {index}: {str(e)}")
 
     # Save to excel
-    cleanedData.to_excel(output_file, index=False)
-    print(f"\nCleaning complete. Results saved to {output_file}")
+    os.makedirs("euroOutputs", exist_ok=True)
+    cleanedData.to_excel(os.path.join("euroOutputs", output_file), index=False)
+    logger.info(f"\nCleaning complete. Results saved to {output_file}")
 
     # Print summary
     total_processed = len(cleanedData)
     skipped_entries = len(cleanedData[cleanedData["skipped"]])
-    print(f"\nSummary:")
-    print(f"Total entries processed: {total_processed}")
-    print(f"Entries marked for review (>1000 words): {skipped_entries}")
+    logger.info(f"\nSummary:")
+    logger.info(f"Total entries processed: {total_processed}")
+    logger.info(f"Entries marked for review (>1500 words): {skipped_entries}")
 
 
 if __name__ == "__main__":
-    INPUT_FILE = "High Priority Pool.xlsx"
+    INPUT_FILE = "High Priority Pool.csv"
     INSTRUCTION_FILE = "instrucitonSoP.txt"
     OUTPUT_FILE = "cleanedData.xlsx"
 

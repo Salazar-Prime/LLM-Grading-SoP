@@ -98,36 +98,64 @@
               "alignment_with_future_endeavors_and_career_direction"
             ],
             "additionalProperties": false
+          },
+          "resilience": {
+            "type": "object",
+            "properties": {
+              "reflection_on_learning_through_experience": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the reflection on learning through experience category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              },
+              "problem_solving": {
+                "type": "object",
+                "properties": {
+                  "score": {
+                    "type": "integer",
+                    "description": "Score for the problem-solving category."
+                  },
+                  "rationale": {
+                    "type": "string",
+                    "description": "Justification for the score supported by citations from the SoP."
+                  }
+                },
+                "required": [
+                  "score",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "reflection_on_learning_through_experience",
+              "problem_solving"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [
           "passion",
-          "clarity_of_purpose"
-        ],
-        "additionalProperties": false
-      },
-      "stars_track_choice": {
-        "type": "object",
-        "properties": {
-          "track": {
-            "type": "string",
-            "description": "The track the student chose for the STARS program. Design or Manufacturing."
-          },
-          "rationale": {
-            "type": "string",
-            "description": "Recommendation for the STARS program track based on their SoP and interest, along with the rationale for the choice."
-          }
-        },
-        "required": [
-          "track",
-          "rationale"
+          "clarity_of_purpose",
+          "resilience"
         ],
         "additionalProperties": false
       }
     },
     "required": [
-      "evaluation",
-      "stars_track_choice"
+      "evaluation"
     ],
     "additionalProperties": false
   }

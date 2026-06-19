@@ -67,9 +67,9 @@ def getPDF(pdfFolderPath, fileLimit=None, logger=None):
 
 if __name__ == "__main__":
     # User variables
-    inputDir = "/Users/varun/Downloads/Cover Letter Files"
-    outputFileName = "cover_letters_temp.xlsx"
-    logFileName = "preProcessPDF__stars.log"
+    inputDir = "/Users/varun/Downloads/Cover Letter Files - March 26 (22 new applications)"
+    outputFileName = "cover_letters_march26.xlsx"
+    logFileName = "preProcessPDF__stars_march26.log"
     outputDir = "euroOutputs"
     
     # Setup logging

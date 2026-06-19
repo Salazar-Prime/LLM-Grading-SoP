@@ -80,14 +80,14 @@ def addTotalScore(df_student):
 
 if __name__ == "__main__":
     # User variables
-    inputFileStudentCoverLetter = "euroOutputs/cover_letters_temp.xlsx"
-    inputFileLLMOutput = "euroOutputs/combined_results.xlsx"
+    inputFileStudentCoverLetter = "euroOutputs/cover_letters_march26.xlsx"
+    inputFileLLMOutput = "euroOutputs/combined_results_march26.xlsx"
     # inputFileStudentData = "euroOutputs/High Priority Pool.xlsx"
     jsonDir = "euroOutputs/jsonOutputs"
-    outputFileName = "STARS25-Evaluation-Details.xlsx"
-    logFileName = "postProcess_stars.log"
+    outputFileName = "STARS25-Evaluation-Details-March26.xlsx"
+    logFileName = "postProcess_stars_march26.log"
     outputDir = "euroOutputs"
-    
+
     # Setup logging
     logger = setupLogger(outputDir, logFileName)
 

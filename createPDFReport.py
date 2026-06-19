@@ -135,7 +135,7 @@ def create_student_report(pdf, row):
     )
     pdf.append(table)
     pdf.append(Spacer(1, 12))
-    
+
     # Add page break after each student
     pdf.append(PageBreak())
 

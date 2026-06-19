@@ -7,6 +7,7 @@ import pandas as pd
 from utils.openaiApi import getResponse
 import json
 import os
+from utils.utils import setupLogger
 
 
 def load_json_schema():
@@ -69,23 +70,31 @@ def mergeResponseWithOriginalData(response, row, originalFileDF, model):
 def process_cleaned_data(
     input_file, json_schema, model, start_index=0, max_entries=None
 ):
-    # Read the cleaned data
-    df = pd.read_excel(input_file)
-    end_index = min(start_index + max_entries, len(df))
-
     # Create output directory if it doesn't exist
-    os.makedirs("outputs", exist_ok=True)
-    os.makedirs("outputs/jsonOutputs", exist_ok=True)
+    os.makedirs("euroOutputs", exist_ok=True)
+    os.makedirs("euroOutputs/jsonOutputs", exist_ok=True)
 
-    # Create a copy of the original DataFrame to store combined results
-    combined_df = df.copy()
+    # Check if combined results already exist
+    combined_output = os.path.join("euroOutputs", "combined_results.xlsx")
+    if os.path.exists(combined_output):
+        # Load existing combined results to preserve previous data
+        combined_df = pd.read_excel(combined_output)
+        df = pd.read_excel(input_file)  # Still need original for iteration
+        logger.info(f"Loaded existing combined results from {combined_output}")
+    else:
+        # Read the cleaned data and create new combined_df
+        df = pd.read_excel(input_file)
+        combined_df = df.copy()
+        logger.info("No existing combined results found, creating new DataFrame")
+
+    end_index = min(start_index + max_entries, len(df))
 
     # Counter for tracking processed entries
     processed_count = 0
 
     # Process entries within the specified range
     for index, row in df.iloc[start_index:end_index].iterrows():
-        print(f"Processing {row['first_name']} {row['last_name']}")
+        logger.info(f"Processing {row['first_name']} {row['last_name']}")
 
         try:
             # Get response from OpenAI
@@ -94,7 +103,7 @@ def process_cleaned_data(
             guid = row["guid"].replace("/", "_")
             # Save the individual response as JSON
             output_filename = os.path.join(
-                "outputs",
+                "euroOutputs",
                 "jsonOutputs",
                 f"{row['first_name']}_{row['last_name']}_{guid}.json",
             )
@@ -103,49 +112,58 @@ def process_cleaned_data(
 
             # print out the summary line with score in each category and add it some logs that will be saved as a file
             summary_line = f"{row['first_name']} {row['last_name']} - {response['response']['evaluation']['passion']['motivation_for_scientific_research']['score']} - {response['response']['evaluation']['passion']['initiative']['score']} - {response['response']['evaluation']['clarity_of_purpose']['program_expectations_and_benefits']['score']} - {response['response']['evaluation']['clarity_of_purpose']['alignment_with_future_endeavors_and_career_direction']['score']} - {response['response']['evaluation']['resilience']['reflection_on_learning_through_experience']['score']} - {response['response']['evaluation']['resilience']['problem_solving']['score']}"
-            print(summary_line)
+            logger.info(summary_line)
 
             # Merge response with original data
             combined_df = mergeResponseWithOriginalData(
                 response, row, combined_df, model
             )
 
-            print(f"Response saved to {output_filename}")
+            logger.info(f"Response saved to {output_filename}")
 
             # Increment processed count
             processed_count += 1
 
             # Save intermittently every 10 entries
             if processed_count % 10 == 0:
-                combined_output = os.path.join("outputs", "combined_results.xlsx")
+                combined_output = os.path.join("euroOutputs", "combined_results.xlsx")
                 combined_df.to_excel(combined_output, index=False)
-                print(
+                logger.info(
                     f"Intermediate results saved after processing {processed_count} entries"
                 )
 
         except Exception as e:
-            print(f"Error processing {row['first_name']} {row['last_name']}: {e}")
+            logger.error(
+                f"Error processing {row['first_name']} {row['last_name']}: {e}"
+            )
 
     # Save the final combined results to an Excel file
-    combined_output = os.path.join("outputs", "combined_results.xlsx")
+    combined_output = os.path.join("euroOutputs", "combined_results.xlsx")
     combined_df.to_excel(combined_output, index=False)
-    print(f"Final combined results saved to {combined_output}")
+    logger.info(f"Final combined results saved to {combined_output}")
 
-    print(
+    logger.info(
         f"Processed {end_index - start_index} entries from index {start_index} to {end_index}"
     )
 
 
 if __name__ == "__main__":
-    INPUT_FILE = "outputs/combined_results.xlsx"
+    INPUT_FILE = "euroOutputs/cleanedData.xlsx"
     model = "gpt-4o"
-    json_schema = load_json_schema()
+    logger = setupLogger("euroOutputs", "process_cleaned_data.log")
+    logger.info(f"Processing {INPUT_FILE} with model {model}")
+    try:
+        json_schema = load_json_schema()
+        logger.info("JSON schema loaded successfully")
+    except Exception as e:
+        logger.error(f"Error loading JSON schema: {e}")
+        raise
 
     # Default to processing first 100 entries
     process_cleaned_data(
         INPUT_FILE,
         json_schema,
         model,
-        start_index=900,
-        max_entries=302,
+        start_index=0,
+        max_entries=3,
     )

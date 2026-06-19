@@ -9,10 +9,12 @@ import os
 
 def merge_evaluation_results():
     # Read the original High Priority Pool file
-    original_df = pd.read_excel("High Priority Pool.xlsx")
+    original_df = pd.read_csv("High Priority Pool.csv", encoding="utf-8")
 
     # Read the combined results file
-    results_df = pd.read_excel("outputs/combined_results.xlsx")
+    # results_df = pd.read_excel("euroOutputs/combined_results.xlsx")
+    # results_df = pd.read_excel("euroOutputs/combined_results_gpt-5.2.xlsx")
+    results_df = pd.read_excel("euroOutputs/combined_results-gpt52-mini.xlsx")
 
     # Score columns for calculating total
     score_columns = [
